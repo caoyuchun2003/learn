@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# Secrets
+.env
+.env.*
+*.pem
+credentials.json
+
+# Local temp
+*.tmp
+.cache/

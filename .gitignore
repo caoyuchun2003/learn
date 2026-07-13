@@ -18,3 +18,11 @@ credentials.json
 # Local temp
 *.tmp
 .cache/
+
+# VitePress / Node
+node_modules/
+.vitepress/cache/
+.vitepress/dist/
+
+# Archives
+*.zip

@@ -38,6 +38,10 @@ export default defineConfig({
                   text: '第 02 课 · Workflow 与 Agent 怎么选',
                   link: '/agent-book/02-第02课-Workflow与Agent怎么选',
                 },
+                {
+                  text: '第 03 课 · RAG 够了吗？什么时候才需要工具',
+                  link: '/agent-book/03-第03课-RAG够了吗什么时候才需要工具',
+                },
               ],
             },
             { text: '分享文案', link: '/agent-book/分享文案' },

@@ -34,6 +34,10 @@ export default defineConfig({
                   text: '第 01 课 · 教材阅读器要不要上 Agent？',
                   link: '/agent-book/01-第01课-教材阅读器要不要上Agent',
                 },
+                {
+                  text: '第 02 课 · Workflow 与 Agent 怎么选',
+                  link: '/agent-book/02-第02课-Workflow与Agent怎么选',
+                },
               ],
             },
             { text: '分享文案', link: '/agent-book/分享文案' },

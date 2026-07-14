@@ -34,7 +34,6 @@ export default defineConfig({
           { text: 'Learn × 百度 CFC', link: '/docs/learn-cfc-方案' },
         ],
       },
-      { text: 'GitHub', link: 'https://github.com/caoyuchun2003/learn' },
     ],
     sidebar: {
       '/tools/': [
@@ -318,9 +317,6 @@ export default defineConfig({
         },
       ],
     },
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/caoyuchun2003/learn' },
-    ],
     footer: {
       message: '© 曹宇春 · 个人学习整理，欢迎交流',
       copyright: 'MIT · CC BY-NC 建议注明出处',

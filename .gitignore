@@ -12,8 +12,11 @@
 # Secrets
 .env
 .env.*
+!.env.example
 *.pem
 credentials.json
+functions/template.deploy.yaml
+functions/.env.local
 
 # Local temp
 *.tmp

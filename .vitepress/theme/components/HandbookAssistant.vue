@@ -229,11 +229,14 @@ defineExpose({ clearChat, syncScopeFromUrl, ask })
         <pre class="text">{{
           m.content || (m.role === 'assistant' && loading ? '…' : '')
         }}</pre>
-        <ul v-if="m.refs?.length" class="refs">
-          <li v-for="(link, j) in m.refs" :key="j">
-            <a :href="linkHref(link)">{{ link.title }}</a>
-          </li>
-        </ul>
+        <div v-if="m.refs?.length" class="refs-block">
+          <p class="refs-title">相关阅读</p>
+          <ul class="refs">
+            <li v-for="(link, j) in m.refs" :key="j">
+              <a class="ref-link" :href="linkHref(link)">{{ link.title }}</a>
+            </li>
+          </ul>
+        </div>
         <div v-if="m.role === 'assistant' && m.done && m.id" class="fb">
           <button
             type="button"
@@ -389,10 +392,31 @@ defineExpose({ clearChat, syncScopeFromUrl, ask })
   font-family: inherit;
   line-height: 1.55;
 }
+.refs-block {
+  margin-top: 0.65rem;
+  padding-top: 0.55rem;
+  border-top: 1px dashed var(--vp-c-divider);
+}
+.refs-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+}
 .refs {
-  margin: 0.5rem 0 0;
+  margin: 0;
   padding-left: 1.1rem;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
+}
+.ref-link {
+  color: var(--vp-c-brand-1) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+.ref-link:hover {
+  color: var(--vp-c-brand-2) !important;
+  opacity: 0.9;
 }
 .fb {
   margin-top: 0.45rem;

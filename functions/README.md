@@ -56,7 +56,7 @@ chmod +x scripts/deploy.sh scripts/set-github-cfc-secret.sh
 | 变量 | 说明 |
 |------|------|
 | `QIANFAN_AK` | 千帆 API Key（Bearer）；仅本机/CFC，**勿提交** |
-| `QIANFAN_MODEL` | 默认在 template 里：`ernie-4.0-8k` |
+| `QIANFAN_MODEL` | 默认在 template 里：`deepseek-v3.2` |
 | `FEATURE_ASK` / `FEATURE_DECIDE` | `on` / `off` |
 | `CORS_ORIGIN` | 默认 `https://caoyuchun2003.github.io` |
 

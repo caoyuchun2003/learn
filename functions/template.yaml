@@ -6,7 +6,7 @@ Resources:
   LearnApiFunction:
     Type: BCE::Serverless::Function
     Properties:
-      Handler: src/index.handler
+      Handler: index.handler
       Runtime: nodejs12
       CodeUri: ./
       Description: Learn decide + ask API
@@ -18,7 +18,7 @@ Resources:
           FEATURE_ASK: 'on'
           CORS_ORIGIN: 'https://caoyuchun2003.github.io'
           RATE_LIMIT_PER_MIN: '20'
-          QIANFAN_MODEL: 'ernie-4.0-8k'
+          QIANFAN_MODEL: 'ernie-x1.1'
       Events:
         DecideHttp:
           Type: HTTP

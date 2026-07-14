@@ -43,18 +43,18 @@ function response(statusCode, bodyObj) {
 }
 
 function getMethod(event) {
+  const rc = event.requestContext || {}
   return (
     event.httpMethod ||
-    event.requestContext?.httpMethod ||
+    rc.httpMethod ||
     event.method ||
     'GET'
   ).toUpperCase()
 }
 
 function getPath(event) {
-  return String(
-    event.path || event.resourcePath || event.requestContext?.path || '',
-  )
+  const rc = event.requestContext || {}
+  return String(event.path || event.resourcePath || rc.path || '')
 }
 
 function parseBody(event) {
@@ -66,7 +66,7 @@ function parseBody(event) {
   if (typeof raw === 'object') return raw
   try {
     return JSON.parse(raw)
-  } catch {
+  } catch (e) {
     return null
   }
 }
@@ -88,7 +88,7 @@ function clientIp(event) {
 function rateLimit(ip) {
   const limit = Number(env('RATE_LIMIT_PER_MIN', '20')) || 20
   const now = Date.now()
-  const windowMs = 60_000
+  const windowMs = 60000
   let bucket = rateMap.get(ip)
   if (!bucket || now - bucket.start > windowMs) {
     bucket = { start: now, count: 0 }

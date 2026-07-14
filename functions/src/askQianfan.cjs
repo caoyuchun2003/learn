@@ -1,7 +1,58 @@
 /**
  * 千帆 Chat Completions（v2 Bearer）
  * 环境变量：QIANFAN_AK、QIANFAN_MODEL（可选）、QIANFAN_API_URL（可选）
+ * 兼容 CFC nodejs12（无原生 fetch / 无可选链）
  */
+
+const https = require('https')
+const { URL } = require('url')
+
+function httpJson(method, urlStr, headers, bodyObj) {
+  return new Promise(function (resolve, reject) {
+    const u = new URL(urlStr)
+    const body = bodyObj != null ? JSON.stringify(bodyObj) : null
+    const req = https.request(
+      {
+        protocol: u.protocol,
+        hostname: u.hostname,
+        port: u.port || 443,
+        path: u.pathname + u.search,
+        method: method,
+        headers: Object.assign(
+          {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          headers || {},
+          body ? { 'Content-Length': Buffer.byteLength(body) } : {},
+        ),
+      },
+      function (res) {
+        const chunks = []
+        res.on('data', function (c) {
+          chunks.push(c)
+        })
+        res.on('end', function () {
+          const text = Buffer.concat(chunks).toString('utf8')
+          let data = {}
+          try {
+            data = text ? JSON.parse(text) : {}
+          } catch (e) {
+            data = { raw: text }
+          }
+          resolve({
+            ok: res.statusCode >= 200 && res.statusCode < 300,
+            status: res.statusCode,
+            data: data,
+          })
+        })
+      },
+    )
+    req.on('error', reject)
+    if (body) req.write(body)
+    req.end()
+  })
+}
 
 async function chatWithQianfan({ system, user, refs }) {
   const ak = process.env.QIANFAN_AK || process.env.QIANFAN_API_KEY
@@ -14,13 +65,23 @@ async function chatWithQianfan({ system, user, refs }) {
   const url =
     process.env.QIANFAN_API_URL ||
     'https://qianfan.baidubce.com/v2/chat/completions'
-  const model = process.env.QIANFAN_MODEL || 'ernie-4.0-8k'
+  const model = process.env.QIANFAN_MODEL || 'ernie-x1.1'
 
-  const refBlock = refs
-    .map(
-      (r, i) =>
-        `[${i + 1}] id=${r.id}\n标题: ${r.title}\n摘要: ${r.snippet}\n路径: ${r.path}`,
-    )
+  const refBlock = (refs || [])
+    .map(function (r, i) {
+      return (
+        '[' +
+        (i + 1) +
+        '] id=' +
+        r.id +
+        '\n标题: ' +
+        r.title +
+        '\n摘要: ' +
+        r.snippet +
+        '\n路径: ' +
+        r.path
+      )
+    })
     .join('\n\n')
 
   const systemPrompt =
@@ -34,41 +95,54 @@ async function chatWithQianfan({ system, user, refs }) {
       '只输出一个 JSON 对象，不要 Markdown 代码围栏。',
     ].join('\n')
 
-  const userPrompt = `用户问题：${user}\n\n手册摘录：\n${refBlock || '（无）'}`
+  const userPrompt =
+    '用户问题：' + user + '\n\n手册摘录：\n' + (refBlock || '（无）')
 
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${ak}`,
-    },
-    body: JSON.stringify({
-      model,
+  const res = await httpJson(
+    'POST',
+    url,
+    { Authorization: 'Bearer ' + ak },
+    {
+      model: model,
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: userPrompt },
       ],
       temperature: 0.2,
-    }),
-  })
+    },
+  )
 
-  const data = await res.json().catch(() => ({}))
+  const data = res.data || {}
   if (!res.ok) {
-    const err = new Error(
-      data.message || data.error_msg || data.error || `千帆 HTTP ${res.status}`,
-    )
+    var msg = data.message || data.error_msg || data.error_description
+    if (!msg && data.error) {
+      msg =
+        typeof data.error === 'string'
+          ? data.error
+          : data.error.message || JSON.stringify(data.error)
+    }
+    if (!msg) msg = '千帆 HTTP ' + res.status
+    const err = new Error(msg)
     err.code = 'UPSTREAM'
     err.detail = data
     throw err
   }
 
-  const content =
-    data.choices?.[0]?.message?.content ||
-    data.result ||
-    data.answer ||
-    ''
+  let content = ''
+  if (
+    data.choices &&
+    data.choices[0] &&
+    data.choices[0].message &&
+    data.choices[0].message.content
+  ) {
+    content = data.choices[0].message.content
+  } else if (data.result) {
+    content = data.result
+  } else if (data.answer) {
+    content = data.answer
+  }
 
-  return { content: String(content), model, raw: data }
+  return { content: String(content), model: model, raw: data }
 }
 
 function parseModelJson(content) {
@@ -86,7 +160,7 @@ function parseModelJson(content) {
       answer: String(obj.answer || '').trim() || candidate.slice(0, 800),
       ref_ids: Array.isArray(obj.ref_ids) ? obj.ref_ids.map(String) : [],
     }
-  } catch {
+  } catch (e) {
     return { answer: candidate.slice(0, 800), ref_ids: [] }
   }
 }

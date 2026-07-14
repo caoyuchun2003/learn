@@ -3,7 +3,8 @@
 | 接口 | 说明 | 是否 AI |
 |------|------|---------|
 | `POST /api/decide` | 方案决策器（规则） | ❌ |
-| `POST /api/ask` | 问本站（检索 + 可选千帆） | ✅ 可选 |
+| `POST /api/ask` | 问本站（检索 + 可选千帆，整包 JSON） | ✅ 可选 |
+| `POST /api/ask/stream` | 问本站 SSE（CFC 可能缓冲；前端可假流式） | ✅ 可选 |
 
 方案：[../docs/learn-cfc-方案.md](../docs/learn-cfc-方案.md)
 

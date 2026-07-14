@@ -38,3 +38,11 @@ Resources:
               - OPTIONS
               - GET
             AuthType: anonymous
+        AskStreamHttp:
+          Type: HTTP
+          Properties:
+            ResourcePath: /api/ask/stream
+            Method:
+              - POST
+              - OPTIONS
+            AuthType: anonymous

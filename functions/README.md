@@ -20,9 +20,19 @@ node scripts/test-retrieve.cjs
 ## 1. 安装并登录 BSAM
 
 ```bash
-pip3 install bce-sam-cli
-bsam config          # 填百度云 AK/SK、地域
+pip3 install --user bce-sam-cli
+# macOS 上建议把 user bin 加进 PATH（可写进 ~/.zshrc）：
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+
+# 若 bsam --help 报 werkzeug / url_quote 错误：
+pip3 install --user 'werkzeug<3'
+
+# 百度云 AK/SK（IAM，不是千帆 API Key）
+bsam config --ak '你的百度云AK' --sk '你的百度云SK' --region bj
+# 会写入 ~/.bce/credentials
 ```
+
+IAM 密钥：https://console.bce.baidu.com/iam/#/iam/accesslist
 
 ## 2. CLI 配置 `QIANFAN_AK` 并部署
 

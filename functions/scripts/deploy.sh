@@ -2,13 +2,25 @@
 # 用本机环境变量注入 QIANFAN_AK 后 bsam package + deploy（Key 不写进 Git）
 set -euo pipefail
 
+export PATH="${HOME}/Library/Python/3.9/bin:${HOME}/.local/bin:${PATH}"
+
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 if ! command -v bsam >/dev/null 2>&1; then
   echo "未找到 bsam。先安装并配置："
-  echo "  pip3 install bce-sam-cli"
-  echo "  bsam config"
+  echo "  pip3 install --user bce-sam-cli"
+  echo "  # 若 bsam --help 报 werkzeug/url_quote："
+  echo "  pip3 install --user 'werkzeug<3'"
+  echo "  bsam config --ak '百度云AK' --sk '百度云SK' --region bj"
+  exit 1
+fi
+
+BCE_CREDS="${HOME}/.bce/credentials"
+if [[ ! -f "$BCE_CREDS" ]]; then
+  echo "未找到 ${BCE_CREDS}。先配置百度云 AK/SK（与千帆 Key 不同）："
+  echo "  bsam config --ak '你的百度云AK' --sk '你的百度云SK' --region bj"
+  echo "AK/SK 在：https://console.bce.baidu.com/iam/#/iam/accesslist"
   exit 1
 fi
 

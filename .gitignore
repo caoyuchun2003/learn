@@ -17,6 +17,8 @@
 credentials.json
 functions/template.deploy.yaml
 functions/.env.local
+functions/*.zip
+functions/.aws-sam/
 
 # Local temp
 *.tmp

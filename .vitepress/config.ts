@@ -44,6 +44,74 @@ export default defineConfig({
                 },
               ],
             },
+            {
+              text: '第二篇 · 模式篇',
+              items: [
+                {
+                  text: '第 04 课 · 提示链与路由',
+                  link: '/agent-book/04-第04课-提示链与路由',
+                },
+                {
+                  text: '第 05 课 · 编排-执行与评估-优化',
+                  link: '/agent-book/05-第05课-编排执行与评估优化',
+                },
+                {
+                  text: '第 06 课 · 自主 Agent',
+                  link: '/agent-book/06-第06课-自主Agent',
+                },
+              ],
+            },
+            {
+              text: '第三篇 · 工程篇',
+              items: [
+                {
+                  text: '第 07 课 · 工具设计与安全',
+                  link: '/agent-book/07-第07课-工具设计与安全',
+                },
+                {
+                  text: '第 08 课 · MCP 与 Function Calling 选型',
+                  link: '/agent-book/08-第08课-MCP与FunctionCalling选型',
+                },
+                {
+                  text: '第 09 课 · 记忆、多轮与上下文',
+                  link: '/agent-book/09-第09课-记忆多轮与上下文',
+                },
+                {
+                  text: '第 10 课 · Eval 与降级',
+                  link: '/agent-book/10-第10课-Eval与降级',
+                },
+              ],
+            },
+            {
+              text: '第四篇 · 场景篇',
+              items: [
+                {
+                  text: '第 11 课 · 阅读器 AI 答疑架构全景',
+                  link: '/agent-book/11-第11课-阅读器AI答疑架构全景',
+                },
+                {
+                  text: '第 12 课 · 章节直灌 vs 知识库检索',
+                  link: '/agent-book/12-第12课-章节直灌vs知识库检索',
+                },
+                {
+                  text: '第 13 课 · 从 V1 到 V2 的演进路线',
+                  link: '/agent-book/13-第13课-从V1到V2的演进路线',
+                },
+              ],
+            },
+            {
+              text: '附录',
+              items: [
+                {
+                  text: '附录 A · Agent 方案决策树',
+                  link: '/agent-book/附录A-Agent方案决策树',
+                },
+                {
+                  text: '附录 B · 架构对比速查',
+                  link: '/agent-book/附录B-架构对比速查',
+                },
+              ],
+            },
             { text: '分享文案', link: '/agent-book/分享文案' },
           ],
         },

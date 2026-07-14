@@ -43,7 +43,9 @@ AI 应用开发手册（原理）
 
 ## 🔗 最新
 
-- **[Agent 工程手册 · 第 01 课](agent-book/01-第01课-教材阅读器要不要上Agent.md)** — 教材阅读器要不要上 Agent？五个决策问题
+- **[AI 方案决策器](tools/ai-decision.md)** — 四问出架构建议（规则引擎 / 可选 CFC）
+- **[Learn × 百度 CFC 方案](docs/learn-cfc-方案.md)** — Pages + 函数计算工程方案
+- **[Agent 工程手册](agent-book/README.md)** — 决策/工程/阅读器场景已出齐（含附录）
 
 ---
 

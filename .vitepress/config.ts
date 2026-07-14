@@ -10,17 +10,36 @@ export default defineConfig({
     '**/node_modules/**',
     '**/.git/**',
     '**/.github/**',
+    '**/functions/**',
     '**/*.zip',
   ],
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
+      { text: '工具', link: '/tools/ai-decision' },
       { text: 'Agent 工程', link: '/agent-book/00-前言与导读' },
       { text: 'AI 应用开发', link: '/AI应用开发手册/00-前言与导读' },
       { text: '操作系统', link: '/os-book/00-前言与导读' },
       { text: 'GitHub', link: 'https://github.com/caoyuchun2003/learn' },
     ],
     sidebar: {
+      '/tools/': [
+        {
+          text: '工具',
+          items: [
+            { text: 'AI 方案决策器', link: '/tools/ai-decision' },
+            { text: 'CFC 工程方案', link: '/docs/learn-cfc-方案' },
+          ],
+        },
+      ],
+      '/docs/': [
+        {
+          text: '工程方案',
+          items: [
+            { text: 'Learn × 百度 CFC', link: '/docs/learn-cfc-方案' },
+          ],
+        },
+      ],
       '/agent-book/': [
         {
           text: 'Agent 工程手册',

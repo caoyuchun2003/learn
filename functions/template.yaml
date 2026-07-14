@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: BCE::Serverless-2018-10-31
+Description: Learn site CFC — decide API (rule engine, no LLM)
+
+Resources:
+  LearnDecideFunction:
+    Type: BCE::Serverless::Function
+    Properties:
+      Handler: src/index.handler
+      Runtime: nodejs12
+      CodeUri: ./
+      Description: Learn AI architecture decision API (non-AI rules)
+      MemorySize: 128
+      Timeout: 10
+      Environment:
+        Variables:
+          FEATURE_DECIDE: 'on'
+          CORS_ORIGIN: 'https://caoyuchun2003.github.io'
+          RATE_LIMIT_PER_MIN: '30'
+      Events:
+        DecideHttp:
+          Type: HTTP
+          Properties:
+            ResourcePath: /api/decide
+            Method:
+              - POST
+              - OPTIONS
+              - GET
+            AuthType: anonymous

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, nextTick } from 'vue'
+import { ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, withBase } from 'vitepress'
 import HandbookAssistant from './HandbookAssistant.vue'
 import { scopeFromPath } from '../scopeFromPath.js'
@@ -23,12 +23,28 @@ function openDrawer() {
   open.value = true
   nextTick(() => {
     assistantRef.value?.syncScopeFromUrl?.()
+    assistantRef.value?.focusInput?.()
   })
 }
 
 function closeDrawer() {
   open.value = false
 }
+
+function onKeydown(e) {
+  if (e.key === 'Escape' && open.value) {
+    e.preventDefault()
+    closeDrawer()
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', onKeydown)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', onKeydown)
+})
 
 watch(
   () => route.path,
@@ -59,11 +75,11 @@ watch(
       class="ask-mask"
       @click.self="closeDrawer"
     >
-      <aside class="ask-drawer" role="dialog" aria-label="手册助教">
+      <aside class="ask-drawer" role="dialog" aria-modal="true" aria-label="手册助教">
         <header class="ask-head">
           <div>
             <strong>手册助教</strong>
-            <span class="sub">只据本站课摘要回答</span>
+            <span class="sub">只据本站课摘要回答 · Esc 关闭</span>
           </div>
           <button type="button" class="ask-x" aria-label="关闭" @click="closeDrawer">
             ×
@@ -128,6 +144,7 @@ watch(
   gap: 0.75rem;
   padding: 1rem 1rem 0.75rem;
   border-bottom: 1px solid var(--vp-c-divider);
+  flex-shrink: 0;
 }
 .ask-head .sub {
   display: block;
@@ -148,13 +165,16 @@ watch(
 .ask-body {
   flex: 1;
   min-height: 0;
-  overflow: auto;
-  padding: 0.75rem 1rem 1rem;
+  overflow: hidden;
+  padding: 0.75rem 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
 }
 .ask-foot {
   padding: 0.65rem 1rem;
   border-top: 1px solid var(--vp-c-divider);
   font-size: 0.85rem;
+  flex-shrink: 0;
 }
 .ask-foot a {
   color: var(--vp-c-brand-1);

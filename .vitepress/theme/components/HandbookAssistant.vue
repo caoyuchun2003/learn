@@ -32,7 +32,11 @@ const model = ref('')
 const requestId = ref('')
 const feedback = ref({}) // id -> up|down
 
+const inputEl = ref(null)
+const threadEl = ref(null)
+
 const apiBase = (import.meta.env.VITE_CFC_BASE || '').replace(/\/$/, '')
+const showEngineering = computed(() => props.variant === 'page')
 
 const suggestions = computed(
   () => SUGGESTIONS[scope.value] || SUGGESTIONS.all,
@@ -53,6 +57,19 @@ function syncScopeFromUrl() {
   scope.value = scopeFromPath(window.location.pathname)
 }
 
+function focusInput() {
+  nextTick(() => {
+    inputEl.value?.focus?.()
+  })
+}
+
+function scrollThreadToBottom() {
+  nextTick(() => {
+    const el = threadEl.value
+    if (el) el.scrollTop = el.scrollHeight
+  })
+}
+
 onMounted(() => {
   if (props.initialScope) scope.value = props.initialScope
   else syncScopeFromUrl()
@@ -63,6 +80,14 @@ watch(
   (v) => {
     if (v) scope.value = v
   },
+)
+
+watch(
+  messages,
+  () => {
+    scrollThreadToBottom()
+  },
+  { deep: true },
 )
 
 function linkHref(link) {
@@ -85,6 +110,7 @@ function clearChat() {
   model.value = ''
   requestId.value = ''
   feedback.value = {}
+  focusInput()
 }
 
 async function ask(text) {
@@ -109,6 +135,7 @@ async function ask(text) {
   }
   messages.value.push(assistant)
   await nextTick()
+  scrollThreadToBottom()
 
   const hist = historyForApi()
   const history = hist.slice(0, -1)
@@ -130,6 +157,7 @@ async function ask(text) {
           },
           onDelta(t) {
             assistant.content += t
+            scrollThreadToBottom()
           },
           onDone(ev) {
             assistant.content = ev.answer || assistant.content
@@ -153,6 +181,7 @@ async function ask(text) {
     assistant.content = ''
     await typewriter(local.answer || '', (t) => {
       assistant.content += t
+      scrollThreadToBottom()
     })
     assistant.done = true
     mode.value = 'local-retrieve'
@@ -164,6 +193,7 @@ async function ask(text) {
     assistant.done = true
   } finally {
     loading.value = false
+    focusInput()
   }
 }
 
@@ -179,12 +209,12 @@ function setFeedback(id, value) {
   feedback.value = { ...feedback.value, [id]: value }
 }
 
-defineExpose({ clearChat, syncScopeFromUrl, ask })
+defineExpose({ clearChat, syncScopeFromUrl, ask, focusInput })
 </script>
 
 <template>
   <div class="ha" :class="variant">
-    <p class="hint">{{ modeHint }}</p>
+    <p v-if="showEngineering" class="hint">{{ modeHint }}</p>
 
     <div class="toolbar">
       <label>
@@ -218,7 +248,7 @@ defineExpose({ clearChat, syncScopeFromUrl, ask })
       </button>
     </div>
 
-    <div class="thread" aria-live="polite">
+    <div ref="threadEl" class="thread" aria-live="polite">
       <div
         v-for="(m, i) in messages"
         :key="i"
@@ -260,32 +290,34 @@ defineExpose({ clearChat, syncScopeFromUrl, ask })
       </div>
     </div>
 
-    <div class="composer">
-      <textarea
-        v-model="input"
-        rows="2"
-        maxlength="200"
-        :disabled="loading"
-        placeholder="例如：教材阅读器要不要上 Agent？"
-        @keydown.enter.exact.prevent="submit"
-      />
-      <button
-        class="btn"
-        type="button"
-        :disabled="loading || !input.trim()"
-        @click="submit"
-      >
-        {{ loading ? '生成中…' : '发送' }}
-      </button>
+    <div class="composer-wrap">
+      <div class="composer">
+        <textarea
+          ref="inputEl"
+          v-model="input"
+          rows="2"
+          maxlength="200"
+          :disabled="loading"
+          placeholder="例如：教材阅读器要不要上 Agent？"
+          @keydown.enter.exact.prevent="submit"
+        />
+        <button
+          class="btn"
+          type="button"
+          :disabled="loading || !input.trim()"
+          @click="submit"
+        >
+          {{ loading ? '生成中…' : '发送' }}
+        </button>
+      </div>
+      <p v-if="error" class="err">{{ error }}</p>
+      <p v-if="showEngineering && (requestId || mode)" class="meta">
+        <span v-if="requestId">requestId: {{ requestId }}</span>
+        <span v-if="mode"> · mode: {{ mode }}</span>
+        <span v-if="model"> · model: {{ model }}</span>
+        <span v-if="streamMode"> · stream: {{ streamMode }}</span>
+      </p>
     </div>
-
-    <p v-if="error" class="err">{{ error }}</p>
-    <p v-if="requestId || mode" class="meta">
-      <span v-if="requestId">requestId: {{ requestId }}</span>
-      <span v-if="mode"> · mode: {{ mode }}</span>
-      <span v-if="model"> · model: {{ model }}</span>
-      <span v-if="streamMode"> · stream: {{ streamMode }}</span>
-    </p>
   </div>
 </template>
 
@@ -305,11 +337,13 @@ defineExpose({ clearChat, syncScopeFromUrl, ask })
 .ha.drawer {
   height: 100%;
   min-height: 0;
+  gap: 0.65rem;
 }
 .hint {
   color: var(--vp-c-text-2);
   font-size: 0.85rem;
   margin: 0;
+  flex-shrink: 0;
 }
 .toolbar {
   display: flex;
@@ -317,6 +351,7 @@ defineExpose({ clearChat, syncScopeFromUrl, ask })
   gap: 0.75rem;
   align-items: end;
   justify-content: space-between;
+  flex-shrink: 0;
 }
 .toolbar label {
   display: flex;
@@ -343,6 +378,9 @@ defineExpose({ clearChat, syncScopeFromUrl, ask })
   opacity: 0.5;
   cursor: not-allowed;
 }
+.suggest {
+  flex-shrink: 0;
+}
 .suggest-label {
   margin: 0 0 0.4rem;
   color: var(--vp-c-text-2);
@@ -363,8 +401,8 @@ defineExpose({ clearChat, syncScopeFromUrl, ask })
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  min-height: 3rem;
   flex: 1;
+  min-height: 0;
   overflow: auto;
 }
 .bubble {
@@ -436,6 +474,20 @@ defineExpose({ clearChat, syncScopeFromUrl, ask })
   border-color: var(--vp-c-brand-1);
   color: var(--vp-c-brand-1);
 }
+.composer-wrap {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 0.15rem;
+  border-top: 1px solid transparent;
+}
+.ha.drawer .composer-wrap {
+  border-top-color: var(--vp-c-divider);
+  padding-top: 0.65rem;
+  margin-top: auto;
+  background: var(--vp-c-bg);
+}
 .composer {
   display: flex;
   gap: 0.6rem;
@@ -450,6 +502,10 @@ defineExpose({ clearChat, syncScopeFromUrl, ask })
   color: var(--vp-c-text-1);
   font: inherit;
   resize: vertical;
+  max-height: 8rem;
+}
+.ha.drawer .composer textarea {
+  resize: none;
 }
 .btn {
   padding: 0.55rem 1rem;

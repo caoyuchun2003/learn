@@ -264,6 +264,54 @@
       "path": "/learn/model-cost-book/08-第08课-案例手册助教换模型.html",
       "keywords": ["换模型", "deepseek-v3.2", "deploy", "QIANFAN_MODEL"],
       "snippet": "改 QIANFAN_MODEL + deploy + curl 看 model 字段 + 黄金问题验收。"
+    },
+    {
+      "id": "cc-00",
+      "scope": "claude-code-book",
+      "title": "Claude Code · 总导读",
+      "path": "/learn/claude-code-book/00-总导读.html",
+      "keywords": ["Claude Code", "终端 Agent", "导读", "课程路径"],
+      "snippet": "从安装到插件开发：会用→会聊→会配→会搭→会造。适合把 Claude Code 当主力工具。"
+    },
+    {
+      "id": "cc-01",
+      "scope": "claude-code-book",
+      "title": "第 01 课 · 认识 Claude Code",
+      "path": "/learn/claude-code-book/01-第01课-认识Claude-Code.html",
+      "keywords": ["认识", "Cursor", "ChatGPT", "区别", "终端"],
+      "snippet": "终端里的 Agent 型编程工具：读代码、改文件、跑命令。和聊天窗 / IDE 插件不同。"
+    },
+    {
+      "id": "cc-13",
+      "scope": "claude-code-book",
+      "title": "第 13 课 · Skills",
+      "path": "/learn/claude-code-book/13-第13课-Skills.html",
+      "keywords": ["Skills", "SKILL.md", "触发", "能力包"],
+      "snippet": "Skill 是带触发条件与步骤的能力包，匹配任务时自动加载。"
+    },
+    {
+      "id": "cc-14",
+      "scope": "claude-code-book",
+      "title": "第 14 课 · Hooks",
+      "path": "/learn/claude-code-book/14-第14课-Hooks.html",
+      "keywords": ["Hooks", "钩子", "自动化", "生命周期"],
+      "snippet": "在关键节点挂钩：格式化、校验、通知。把流程固化到工具生命周期。"
+    },
+    {
+      "id": "cc-16",
+      "scope": "claude-code-book",
+      "title": "第 16 课 · MCP",
+      "path": "/learn/claude-code-book/16-第16课-MCP.html",
+      "keywords": ["MCP", "Model Context Protocol", "工具", "扩展"],
+      "snippet": "用 MCP 接外部工具与数据源，扩展 Claude Code 能碰的世界。"
+    },
+    {
+      "id": "cc-08",
+      "scope": "claude-code-book",
+      "title": "第 08 课 · CLAUDE.md",
+      "path": "/learn/claude-code-book/08-第08课-CLAUDE-md.html",
+      "keywords": ["CLAUDE.md", "项目约定", "上下文", "规范"],
+      "snippet": "用 CLAUDE.md 写下项目约定，让 Agent 每次都能对齐仓库习惯。"
     }
   ]
 }

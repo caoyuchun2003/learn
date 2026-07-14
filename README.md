@@ -19,6 +19,7 @@
 | **比特币技术全书** | 开发者向比特币原理与实战 | [bitcoin-dev-book](bitcoin-dev-book/README.md) |
 | **H3C 网络产品史** | 产品线与架构演进 | [h3c-network-book](h3c-network-book/README.md) |
 | **H3C 网络 CLI 实战** | Comware 命令与 Demo | [h3c-network-cli-book](h3c-network-cli-book/README.md) |
+| **警察上门怎么办** | 开不开门、传唤、保证书：场景对照 | [police-visit-guide](police-visit-guide/README.md) |
 
 ---
 

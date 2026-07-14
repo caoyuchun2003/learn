@@ -16,7 +16,13 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
-      { text: '工具', link: '/tools/ai-decision' },
+      {
+        text: '工具',
+        items: [
+          { text: '问本站', link: '/tools/ask' },
+          { text: 'AI 方案决策器', link: '/tools/ai-decision' },
+        ],
+      },
       { text: 'Agent 工程', link: '/agent-book/00-前言与导读' },
       { text: 'AI 应用开发', link: '/AI应用开发手册/00-前言与导读' },
       { text: '操作系统', link: '/os-book/00-前言与导读' },
@@ -27,6 +33,7 @@ export default defineConfig({
         {
           text: '工具',
           items: [
+            { text: '问本站', link: '/tools/ask' },
             { text: 'AI 方案决策器', link: '/tools/ai-decision' },
             { text: 'CFC 工程方案', link: '/docs/learn-cfc-方案' },
           ],

@@ -2,7 +2,7 @@
 
 > 静态书库（GitHub Pages）+ Serverless API（百度 CFC）  
 > **先打通非 AI 能力，再按需加「问手册」AI。**  
-> 作者：曹宇春 · 状态：**一期代码已落地**（本地规则可用；CFC 待你用 BSAM 部署）· 2026-07
+> 作者：曹宇春 · 状态：**一、二期代码已落地**（决策器 + 问本站；本地可降级；CFC / 千帆待你部署与配 Key）· 2026-07
 
 ---
 
@@ -68,8 +68,8 @@
 
 | 期次 | 功能 | 是否 AI | 优先级 |
 |------|------|---------|--------|
-| **一期 MVP** | 方案决策器 + CORS + 开关 + 限流 | ❌ | P0 |
-| **二期** | 问本站（千帆代理 + 课目录/导读摘要） | ✅ | P1 |
+| **一期 MVP** | 方案决策器 + CORS + 开关 + 限流 | ❌ | ✅ 已实现 |
+| **二期** | 问本站（千帆代理 + 课目录/导读摘要） | ✅ | ✅ 已实现（无 Key 时仅检索） |
 | **三期（可选）** | 流式回答、反馈按钮、更全摘要包 | ✅ | P2 |
 
 ---
@@ -149,7 +149,7 @@ Response：
 **用户故事：**  
 用自然语言提问，得到简短回答 + 2～5 条站内链接；手册没写的内容明确说「未覆盖」。
 
-**入口：** 导读页嵌入 + 可选全局浮动「问手册」
+**入口：** `/tools/ask`（VitePress）；未配置 CFC / 千帆时仅关键词检索。
 
 **接口：`POST /api/ask`**
 
@@ -200,32 +200,34 @@ Response：
 | 限流 | 同 IP 粗粒度计数（进程内即可，重启清零可接受） |
 | 错误码 | `BAD_REQUEST` / `RATE_LIMIT` / `DISABLED` / `UPSTREAM` |
 
-前端：未配置 `VITE_CFC_BASE` 或功能关闭时，**不展示工具**或显示维护文案。
+前端：未配置 `VITE_CFC_BASE` 时，决策器 / 问本站均在浏览器降级；功能关闭（`FEATURE_*=off`）时云端返回 503。
+
+GitHub Actions：`secrets.VITE_CFC_BASE` 注入构建（见 `.github/workflows/docs.yml`）。
 
 ---
 
-## 4. 目录与仓库布局（建议）
+## 4. 目录与仓库布局
 
 ```
 learn/
 ├── docs/
-│   └── learn-cfc-方案.md          # 本文
-├── tools/                           # VitePress 工具页（一期）
-│   └── ai-decision.md
-├── functions/                       # CFC 工程（BSAM）
+│   └── learn-cfc-方案.md
+├── tools/
+│   ├── ask.md                 # 问本站
+│   └── ai-decision.md         # 方案决策器
+├── functions/                 # CFC（BSAM）
 │   ├── template.yaml
-│   ├── package.json
-│   ├── src/
-│   │   ├── decide.js
-│   │   ├── ask.js                 # 二期
-│   │   └── common/cors.js
-│   └── data/
-│       └── manifest.json          # 二期摘要；一期决策链接也可放这
-└── .vitepress/
-    └── …                          # 导航增加「工具」
+│   ├── README.md
+│   ├── data/manifest.json
+│   └── src/
+│       ├── index.js           # /api/decide + /api/ask
+│       ├── decideEngine.cjs
+│       ├── retrieve.cjs
+│       └── askQianfan.cjs
+└── .vitepress/config.ts       # 导航「工具」
 ```
 
-前端构建环境变量（仅 URL）：
+前端构建环境变量（仅 URL，勿写 Key）：
 
 ```bash
 VITE_CFC_BASE=https://xxxx.cfc-execute.bj.baidubce.com
@@ -276,33 +278,28 @@ bsam deploy          # 创建或更新函数 + template 中的 HTTP 触发器
 
 ## 7. 验收标准
 
-### 一期 MVP
+### 一期 MVP（代码侧）
 
-- [ ] `POST /api/decide` curl 通，返回 recommend + links  
-- [ ] Pages `/tools/ai-decision` 可提交并展示结果、链接可点  
+- [x] `decide` 引擎 + 本地单测；前端 `/tools/ai-decision` 可本地降级  
+- [ ] 你侧：`bsam deploy` 后 `POST /api/decide` curl 通  
 - [ ] Network 面板无百度千帆 Key  
-- [ ] CORS 仅允许约定 Origin（或明确的本地调试列表）  
-- [ ] `FEATURE_DECIDE=off` 时接口 503、前端有提示  
+- [ ] `FEATURE_DECIDE=off` 时接口 503  
 
-### 二期
+### 二期（代码侧）
 
-- [ ] 「问本站」一问一答 + ≥1 条站内链  
+- [x] `manifest` + `retrieve` + `/api/ask` + `/tools/ask`（无 Key 仅检索）  
+- [ ] 你侧：CFC 配 `QIANFAN_AK`，生成回答 + ≥1 条站内链  
 - [ ] 手册未覆盖类问题不编造课名  
-- [ ] `FEATURE_ASK=off` 可单独关闭 AI，决策器仍可用  
+- [ ] `FEATURE_ASK=off` 可单独关闭  
 
 ---
 
-## 8. 实施计划（建议）
+## 8. 你侧待办（代码已齐）
 
-| 步骤 | 内容 | 预估 |
-|------|------|------|
-| 1 | 定稿本方案；建 `functions/` 骨架 + `template.yaml` | 0.5d |
-| 2 | 实现 `decide` + 本地/ BSAM 部署 | 0.5～1d |
-| 3 | VitePress `tools/ai-decision` + 接 API | 0.5d |
-| 4 | 配 CI/文档：如何填 `VITE_CFC_BASE`、如何 deploy | 0.5d |
-| 5 | （二期）manifest + ask + 千帆 | 1～2d |
-
-**建议节奏：** 先合并一期到 `main` 并上 Pages；二期单独 PR。
+1. `cd functions && bsam config && bsam package && bsam deploy`  
+2. CFC 控制台设 `QIANFAN_AK`（勿提交仓库）  
+3. GitHub Secrets 设 `VITE_CFC_BASE` = CFC HTTPS 基础 URL  
+4. 推送后确认 Pages「问本站 / 决策器」走云端  
 
 ---
 
@@ -321,18 +318,9 @@ bsam deploy          # 创建或更新函数 + template 中的 HTTP 触发器
 | 问题 | 结论 |
 |------|------|
 | learn 要不要加 CFC？ | **要，小步**：先做非 AI 决策 API |
-| 是不是全是 AI？ | **否**；一期零模型 |
+| 是不是全是 AI？ | **否**；一期零模型；二期可选千帆 |
 | 能否 CLI 部署？ | **能**（BSAM CLI） |
-| 要备案吗？ | **一期不需要**（平台域名） |
-
----
-
-## 11. 下一步（实现时）
-
-1. 在仓库创建 `functions/` + `tools/ai-decision.md`  
-2. 本机 `bsam config` / `deploy`（需你的百度 AK）  
-3. Pages 构建增加 `VITE_CFC_BASE`  
-4. 验证验收清单后写简短「工具」说明页  
+| 要备案吗？ | **不需要**（平台域名） |
 
 ---
 

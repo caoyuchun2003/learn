@@ -1,63 +1,62 @@
 # Learn · 百度 CFC 函数
 
-一期：**方案决策器**（规则引擎，不调大模型）。
+| 接口 | 说明 | 是否 AI |
+|------|------|---------|
+| `POST /api/decide` | 方案决策器（规则） | ❌ |
+| `POST /api/ask` | 问本站（检索 + 可选千帆） | ✅ 可选 |
 
-方案全文见 [../docs/learn-cfc-方案.md](../docs/learn-cfc-方案.md)。
+方案：[../docs/learn-cfc-方案.md](../docs/learn-cfc-方案.md)
 
 ---
 
-## 本地验证决策逻辑（不依赖云）
+## 本地验证（不依赖云）
 
 ```bash
 cd functions
 node scripts/test-decide.cjs
+node scripts/test-retrieve.cjs
 ```
 
-## 部署到百度 CFC（BSAM CLI）
-
-1. 开通 [函数计算 CFC](https://console.bce.baidu.com/cfc)，创建 Access Key。
-2. 安装 CLI：
+## 部署（BSAM CLI）
 
 ```bash
 pip3 install bce-sam-cli
-bsam config   # 填写 AK / SK / region（如 bj）
-```
-
-3. 部署（`Runtime` 若报错，按控制台当前支持的 Node 版本改 `template.yaml`）：
-
-```bash
+bsam config
 cd functions
 bsam package
 bsam deploy
 ```
 
-4. 在控制台打开函数 → 触发器，复制 HTTP 地址，例如：
+在控制台为函数配置环境变量（或改 `template.yaml` 后重新 deploy）：
 
-```text
-https://xxxx.cfc-execute.bj.baidubce.com/api/decide
-```
+| 变量 | 说明 |
+|------|------|
+| `QIANFAN_AK` | 千帆 API Key（Bearer）；**不要提交仓库** |
+| `QIANFAN_MODEL` | 默认 `ernie-4.0-8k`，可按账号可用模型改 |
+| `FEATURE_ASK` / `FEATURE_DECIDE` | `on` / `off` |
+| `CORS_ORIGIN` | 默认 `https://caoyuchun2003.github.io` |
 
-5. 本地或 CI 构建站点时设置：
+## 接到 GitHub Pages
 
-```bash
-export VITE_CFC_BASE=https://xxxx.cfc-execute.bj.baidubce.com
-npm run docs:build
-```
+1. 复制触发器基础 URL，例如 `https://xxxx.cfc-execute.bj.baidubce.com`（不要末尾路径，或两种都试）  
+2. 在 GitHub 仓库 **Settings → Secrets → Actions** 新增：
 
-未设置 `VITE_CFC_BASE` 时，决策页使用 **浏览器内嵌同一套规则**（离线可用）。
+   `VITE_CFC_BASE` = 该 URL  
 
-## 环境变量
+3. 推送或手动跑 `Deploy VitePress` workflow。
 
-| 变量 | 默认 | 含义 |
-|------|------|------|
-| `FEATURE_DECIDE` | `on` | `off` 关闭接口 |
-| `CORS_ORIGIN` | `https://caoyuchun2003.github.io` | 允许的前端源 |
-| `RATE_LIMIT_PER_MIN` | `30` | 每 IP 每分钟次数 |
+未配置时：决策器 / 问本站均在浏览器内降级（规则或关键词检索）。
 
-## curl 示例
+## curl
 
 ```bash
+# 决策
 curl -s -X POST "$VITE_CFC_BASE/api/decide" \
   -H 'Content-Type: application/json' \
   -d '{"stepsFixed":"yes","textOnly":"yes","knowledgeInDocs":"yes","needHumanInLoop":"yes"}'
+
+# 提问
+curl -s -X POST "$VITE_CFC_BASE/api/ask" \
+  -H 'Content-Type: application/json' \
+  -d '{"question":"阅读器要不要上 Agent","scope":"agent-book"}'
 ```

@@ -1,27 +1,38 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: BCE::Serverless-2018-10-31
-Description: Learn site CFC — decide API (rule engine, no LLM)
+Description: Learn site CFC — decide (rules) + ask (Qianfan optional)
 
 Resources:
-  LearnDecideFunction:
+  LearnApiFunction:
     Type: BCE::Serverless::Function
     Properties:
       Handler: src/index.handler
       Runtime: nodejs12
       CodeUri: ./
-      Description: Learn AI architecture decision API (non-AI rules)
-      MemorySize: 128
-      Timeout: 10
+      Description: Learn decide + ask API
+      MemorySize: 256
+      Timeout: 60
       Environment:
         Variables:
           FEATURE_DECIDE: 'on'
+          FEATURE_ASK: 'on'
           CORS_ORIGIN: 'https://caoyuchun2003.github.io'
-          RATE_LIMIT_PER_MIN: '30'
+          RATE_LIMIT_PER_MIN: '20'
+          QIANFAN_MODEL: 'ernie-4.0-8k'
       Events:
         DecideHttp:
           Type: HTTP
           Properties:
             ResourcePath: /api/decide
+            Method:
+              - POST
+              - OPTIONS
+              - GET
+            AuthType: anonymous
+        AskHttp:
+          Type: HTTP
+          Properties:
+            ResourcePath: /api/ask
             Method:
               - POST
               - OPTIONS

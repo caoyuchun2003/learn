@@ -29,7 +29,10 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run docs:build
+      - name: Build VitePress
+        env:
+          VITE_CFC_BASE: ${{ secrets.VITE_CFC_BASE }}
+        run: npm run docs:build
 
       - uses: actions/upload-pages-artifact@v3
         with:

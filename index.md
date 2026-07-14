@@ -26,6 +26,9 @@ features:
   - title: Claude Code 学习方法
     details: 终端 Agent 从入门到 Skills、Hooks、MCP 与插件开发。
     link: /claude-code-book/00-总导读
+  - title: 问本站
+    details: 按手册摘要检索相关课；接上百度 CFC + 千帆后可生成简短回答。
+    link: /tools/ask
   - title: AI 方案决策器
     details: 四个问题选出 Workflow / RAG / Agent。规则引擎，可不调大模型。
     link: /tools/ai-decision

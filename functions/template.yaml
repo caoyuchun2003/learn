@@ -18,7 +18,7 @@ Resources:
           FEATURE_ASK: 'on'
           CORS_ORIGIN: 'https://caoyuchun2003.github.io'
           RATE_LIMIT_PER_MIN: '20'
-          QIANFAN_MODEL: 'ernie-x1.1'
+          QIANFAN_MODEL: 'deepseek-v3.2'
       Events:
         DecideHttp:
           Type: HTTP

@@ -84,7 +84,7 @@ function getAk() {
 }
 
 function getModel() {
-  return process.env.QIANFAN_MODEL || 'ernie-x1.1'
+  return process.env.QIANFAN_MODEL || 'deepseek-v3.2'
 }
 
 function getApiUrl() {

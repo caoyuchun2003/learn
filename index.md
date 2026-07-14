@@ -14,15 +14,15 @@ hero:
       link: /AI应用开发手册/00-前言与导读
 
 features:
-  - title: 模型与成本落地 🆕
-    details: DeepSeek / 文心怎么选、Token 怎么算、CFC 假流式与换模 runbook。
-    link: /model-cost-book/00-前言与导读
-  - title: Agent 工程手册
-    details: 不是名词百科。教材阅读器要不要上 Agent？五个问题先拍板，再写代码。
-    link: /agent-book/01-第01课-教材阅读器要不要上Agent
   - title: AI 应用开发手册
     details: 23 课成网：RAG、Agent、提示工程、本地部署与成本。Web 开发者 AI 落地主线。
     link: /AI应用开发手册/00-前言与导读
+  - title: Agent 工程手册
+    details: 不是名词百科。教材阅读器要不要上 Agent？五个问题先拍板，再写代码。
+    link: /agent-book/01-第01课-教材阅读器要不要上Agent
+  - title: 模型与成本落地 🆕
+    details: DeepSeek / 文心怎么选、Token 怎么算、CFC 假流式与换模 runbook。
+    link: /model-cost-book/00-前言与导读
   - title: 操作系统白话
     details: 用公司类比讲进程、内存、Docker。Mac 开发者对着 Terminal 练。
     link: /os-book/00-前言与导读
@@ -40,31 +40,40 @@ features:
     link: /docs/learn-cfc-方案
 ---
 
+<div class="home-paths">
+
 ## 推荐阅读路径
 
 ### AI 落地
 
-从应用选型到工程落地，再到终端 Agent：
+适合：已会写 Web，想系统上路 RAG / Agent。
 
-[AI 应用开发手册](/AI应用开发手册/00-前言与导读) → [Agent 工程手册](/agent-book/00-前言与导读) → [Claude Code](/claude-code-book/00-总导读)
+1. [AI 应用开发手册](/AI应用开发手册/00-前言与导读)
+2. [Agent 工程手册](/agent-book/00-前言与导读)
+3. [Claude Code](/claude-code-book/00-总导读)
 
 ### 选型与控费
 
-先算清 Token 与模型，再决定方案，最后用助教核对手册：
+适合：已经在调模型，担心账单、换模、Key 放哪。
 
-[模型与成本落地](/model-cost-book/00-前言与导读) → [AI 方案决策器](/tools/ai-decision) → [手册助教](/tools/ask)
+1. [模型与成本落地](/model-cost-book/00-前言与导读)
+2. [AI 方案决策器](/tools/ai-decision)
+3. [手册助教](/tools/ask)
 
 ### 本机与底层
 
-对着 Mac Terminal 把进程、内存、Docker 讲清楚：
+适合：Mac 开发，想对着 Terminal 搞懂进程 / 内存 / Docker。
 
-[操作系统白话](/os-book/00-前言与导读)
+1. [操作系统白话](/os-book/00-前言与导读)
 
 ### 工程上线
 
-静态站 + 云函数怎么接、Key 怎么放、助教怎么问：
+适合：要把手册站或助教接到云函数上线。
 
-[Learn × 百度 CFC](/docs/learn-cfc-方案) → [手册助教](/tools/ask)
+1. [Learn × 百度 CFC](/docs/learn-cfc-方案)
+2. [手册助教](/tools/ask)
+
+</div>
 
 ---
 

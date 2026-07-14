@@ -35,25 +35,36 @@ features:
   - title: AI 方案决策器
     details: 四个问题选出 Workflow / RAG / Agent。规则引擎，可不调大模型。
     link: /tools/ai-decision
+  - title: Learn × 百度 CFC
+    details: Pages + Serverless：触发器、Key 注入、假流式与部署 runbook。
+    link: /docs/learn-cfc-方案
 ---
 
 ## 推荐阅读路径
 
-**AI 应用开发：**
+### AI 落地
 
-```
-AI 应用开发手册 → Agent 工程手册 → Claude Code 书
-```
+从应用选型到工程落地，再到终端 Agent：
 
-**本机与底层：**
+[AI 应用开发手册](/AI应用开发手册/00-前言与导读) → [Agent 工程手册](/agent-book/00-前言与导读) → [Claude Code](/claude-code-book/00-总导读)
 
-```
-操作系统白话
-```
+### 选型与控费
 
-**工程方案：**
+先算清 Token 与模型，再决定方案，最后用助教核对手册：
 
-- [Learn × 百度 CFC：Pages + Serverless](/docs/learn-cfc-方案)
+[模型与成本落地](/model-cost-book/00-前言与导读) → [AI 方案决策器](/tools/ai-decision) → [手册助教](/tools/ask)
+
+### 本机与底层
+
+对着 Mac Terminal 把进程、内存、Docker 讲清楚：
+
+[操作系统白话](/os-book/00-前言与导读)
+
+### 工程上线
+
+静态站 + 云函数怎么接、Key 怎么放、助教怎么问：
+
+[Learn × 百度 CFC](/docs/learn-cfc-方案) → [手册助教](/tools/ask)
 
 ---
 

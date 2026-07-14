@@ -17,16 +17,23 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       {
+        text: '手册',
+        items: [
+          { text: 'Agent 工程', link: '/agent-book/00-前言与导读' },
+          { text: 'AI 应用开发', link: '/AI应用开发手册/00-前言与导读' },
+          { text: '操作系统白话', link: '/os-book/00-前言与导读' },
+          { text: '模型与成本', link: '/model-cost-book/00-前言与导读' },
+          { text: 'Claude Code', link: '/claude-code-book/00-总导读' },
+        ],
+      },
+      {
         text: '工具',
         items: [
           { text: '问本站', link: '/tools/ask' },
           { text: 'AI 方案决策器', link: '/tools/ai-decision' },
+          { text: 'Learn × 百度 CFC', link: '/docs/learn-cfc-方案' },
         ],
       },
-      { text: 'Agent 工程', link: '/agent-book/00-前言与导读' },
-      { text: 'AI 应用开发', link: '/AI应用开发手册/00-前言与导读' },
-      { text: '操作系统', link: '/os-book/00-前言与导读' },
-      { text: '模型与成本', link: '/model-cost-book/00-前言与导读' },
       { text: 'GitHub', link: 'https://github.com/caoyuchun2003/learn' },
     ],
     sidebar: {

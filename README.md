@@ -10,7 +10,8 @@
 
 | 手册 | 一句话 | 入口 |
 |------|--------|------|
-| **Agent 工程手册** 🆕 | 阅读器要不要上 Agent？先答 5 问 | [agent-book](agent-book/README.md) |
+| **模型与成本落地手册** 🆕 | DeepSeek/文心选型与控费、换模落地 | [model-cost-book](model-cost-book/README.md) |
+| **Agent 工程手册** | 阅读器要不要上 Agent？先答 5 问 | [agent-book](agent-book/README.md) |
 | **AI 应用开发手册** | Web 开发者 AI 落地：RAG / Agent / 架构 | [AI应用开发手册](AI应用开发手册/README.md) |
 | **操作系统白话** | 用公司类比讲 OS，对着 Mac 练 | [os-book](os-book/README.md) |
 | **Claude Code 学习方法** | 终端 Agent：Skills / MCP / 插件 | [claude-code-book](claude-code-book/00-总导读.md) |
@@ -25,12 +26,12 @@
 
 ## 🧭 推荐阅读路径
 
-**AI 应用开发：**
+**AI / 模型：**
 
 ```
-AI 应用开发手册（原理）
-    → Agent 工程手册（选型与场景）
-    → Claude Code 书（Coding Agent 实战）
+AI 应用开发手册（能力怎么组）
+    → 模型与成本落地（选哪个、花多少）
+    → Agent 工程手册（要不要上 Agent）
 ```
 
 **本机与底层：**
@@ -43,6 +44,7 @@ AI 应用开发手册（原理）
 
 ## 🔗 最新
 
+- **[模型与成本落地手册](model-cost-book/README.md)** 🆕 — DeepSeek / 控费 / 换模
 - **[手册助教 / 问本站](tools/ask.md)** — 对话问答；文档页「问手册」抽屉；SSE / 假流式
 - **[AI 方案决策器](tools/ai-decision.md)** — 四问出架构建议（规则引擎 / 可选 CFC）
 - **[Learn × 百度 CFC 方案](docs/learn-cfc-方案.md)** — Pages + 函数计算工程方案

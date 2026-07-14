@@ -14,7 +14,10 @@ hero:
       link: /AI应用开发手册/00-前言与导读
 
 features:
-  - title: Agent 工程手册 🆕
+  - title: 模型与成本落地 🆕
+    details: DeepSeek / 文心怎么选、Token 怎么算、CFC 假流式与换模 runbook。
+    link: /model-cost-book/00-前言与导读
+  - title: Agent 工程手册
     details: 不是名词百科。教材阅读器要不要上 Agent？五个问题先拍板，再写代码。
     link: /agent-book/01-第01课-教材阅读器要不要上Agent
   - title: AI 应用开发手册

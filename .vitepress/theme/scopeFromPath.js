@@ -11,6 +11,7 @@ export function scopeFromPath(pathname) {
   if (p.includes('AI应用开发手册') || p.includes('/AI应用开发'))
     return 'ai-handbook'
   if (p.includes('/os-book')) return 'os-book'
+  if (p.includes('/model-cost-book')) return 'model-cost-book'
   if (p.includes('/tools')) return 'tools'
   return 'all'
 }
@@ -20,6 +21,7 @@ export const SCOPE_OPTIONS = [
   { value: 'ai-handbook', label: 'AI 应用开发手册' },
   { value: 'agent-book', label: 'Agent 工程手册' },
   { value: 'os-book', label: '操作系统白话' },
+  { value: 'model-cost-book', label: '模型与成本落地' },
   { value: 'tools', label: '站内工具' },
 ]
 
@@ -27,7 +29,7 @@ export const SUGGESTIONS = {
   all: [
     '教材阅读器要不要上 Agent？',
     'RAG 和微调怎么选？',
-    '用公司类比怎么理解操作系统？',
+    'DeepSeek 和文心怎么选？',
   ],
   'agent-book': [
     '教材阅读器要不要上 Agent？',
@@ -43,6 +45,11 @@ export const SUGGESTIONS = {
     '用公司类比怎么理解操作系统？',
     '进程和线程有什么区别？',
     'Mac 为什么会卡、和 swap 有什么关系？',
+  ],
+  'model-cost-book': [
+    '模型是不是越贵越好？',
+    'DeepSeek 和文心怎么选？',
+    '为什么 CFC 常常是假流式？',
   ],
   tools: ['方案决策器解决什么问题？', '问本站怎么用？'],
 }

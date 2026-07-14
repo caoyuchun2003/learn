@@ -192,6 +192,78 @@
       "path": "/learn/tools/ai-decision.html",
       "keywords": ["决策器", "选型", "四个问题", "规则"],
       "snippet": "四个问题用规则引擎建议 Workflow/RAG/Agent，不调用大模型。也可接百度 CFC。"
+    },
+    {
+      "id": "mc-00",
+      "scope": "model-cost-book",
+      "title": "模型与成本落地 · 前言与导读",
+      "path": "/learn/model-cost-book/00-前言与导读.html",
+      "keywords": ["模型", "成本", "Token", "DeepSeek", "选型", "控费"],
+      "snippet": "先场景与预算再选模型。成本=单价×Token×次数×重试；模型名配置化，Key 不进前端。"
+    },
+    {
+      "id": "mc-01",
+      "scope": "model-cost-book",
+      "title": "第 01 课 · 模型不是越贵越好",
+      "path": "/learn/model-cost-book/01-第01课-模型不是越贵越好.html",
+      "keywords": ["越贵越好", "性价比", "主力模型", "兜底"],
+      "snippet": "难模型当急救箱；默认用够用且稳的主力。还要看延迟、配额、稳定性。"
+    },
+    {
+      "id": "mc-02",
+      "scope": "model-cost-book",
+      "title": "第 02 课 · Token 账单怎么算",
+      "path": "/learn/model-cost-book/02-第02课-Token账单怎么算.html",
+      "keywords": ["Token", "账单", "输入", "输出", "重试"],
+      "snippet": "单价只是分子；摘录、多轮 history、重试才是爆炸点。先填估算表再选型。"
+    },
+    {
+      "id": "mc-03",
+      "scope": "model-cost-book",
+      "title": "第 03 课 · DeepSeek、文心、闭源怎么选",
+      "path": "/learn/model-cost-book/03-第03课-DeepSeek文心闭源怎么选.html",
+      "keywords": ["DeepSeek", "文心", "千帆", "选型", "invalid_model"],
+      "snippet": "以账号可调用模型列表为准。导读短答可走 DeepSeek；难推理再升舱。"
+    },
+    {
+      "id": "mc-04",
+      "scope": "model-cost-book",
+      "title": "第 04 课 · 多模型路由",
+      "path": "/learn/model-cost-book/04-第04课-多模型路由.html",
+      "keywords": ["路由", "升舱", "降级", "多模型", "难度"],
+      "snippet": "按题型/长度/失败率切模型；配置表驱动，避免前端写死模型名。"
+    },
+    {
+      "id": "mc-05",
+      "scope": "model-cost-book",
+      "title": "第 05 课 · Key 放哪、谁来调",
+      "path": "/learn/model-cost-book/05-第05课-Key放哪谁来调.html",
+      "keywords": ["API Key", "CFC", "BFF", "前端", "泄露"],
+      "snippet": "浏览器永不持有模型 Key；CFC/BFF 集中调用；IAM 与千帆 Key 勿混。"
+    },
+    {
+      "id": "mc-06",
+      "scope": "model-cost-book",
+      "title": "第 06 课 · 流式、假流式与超时",
+      "path": "/learn/model-cost-book/06-第06课-流式假流式与超时.html",
+      "keywords": ["SSE", "假流式", "CFC", "缓冲", "超时"],
+      "snippet": "厂商可真流式；CFC HTTP 常整包缓冲→假流式。假流式不省 Token 与等待。"
+    },
+    {
+      "id": "mc-07",
+      "scope": "model-cost-book",
+      "title": "第 07 课 · 限流、缓存与降级",
+      "path": "/learn/model-cost-book/07-第07课-限流缓存与降级.html",
+      "keywords": ["限流", "缓存", "降级", "配额", "控费"],
+      "snippet": "限额防止账单爆炸；短问可缓存；模型不可用时降到规则或固定答。"
+    },
+    {
+      "id": "mc-08",
+      "scope": "model-cost-book",
+      "title": "第 08 课 · 案例：手册助教换模型",
+      "path": "/learn/model-cost-book/08-第08课-案例手册助教换模型.html",
+      "keywords": ["换模型", "deepseek-v3.2", "deploy", "QIANFAN_MODEL"],
+      "snippet": "改 QIANFAN_MODEL + deploy + curl 看 model 字段 + 黄金问题验收。"
     }
   ]
 }

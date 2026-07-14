@@ -26,6 +26,7 @@ export default defineConfig({
       { text: 'Agent 工程', link: '/agent-book/00-前言与导读' },
       { text: 'AI 应用开发', link: '/AI应用开发手册/00-前言与导读' },
       { text: '操作系统', link: '/os-book/00-前言与导读' },
+      { text: '模型与成本', link: '/model-cost-book/00-前言与导读' },
       { text: 'GitHub', link: 'https://github.com/caoyuchun2003/learn' },
     ],
     sidebar: {
@@ -224,6 +225,63 @@ export default defineConfig({
               ],
             },
             { text: '结语', link: '/os-book/99-结语' },
+          ],
+        },
+      ],
+      '/model-cost-book/': [
+        {
+          text: '模型与成本落地',
+          items: [
+            { text: '手册首页', link: '/model-cost-book/README' },
+            { text: '前言与导读', link: '/model-cost-book/00-前言与导读' },
+            {
+              text: '选型篇',
+              items: [
+                {
+                  text: '第 01 课 · 不是越贵越好',
+                  link: '/model-cost-book/01-第01课-模型不是越贵越好',
+                },
+                {
+                  text: '第 02 课 · Token 账单',
+                  link: '/model-cost-book/02-第02课-Token账单怎么算',
+                },
+                {
+                  text: '第 03 课 · DeepSeek/文心/闭源',
+                  link: '/model-cost-book/03-第03课-DeepSeek文心闭源怎么选',
+                },
+              ],
+            },
+            {
+              text: '路由篇',
+              items: [
+                {
+                  text: '第 04 课 · 多模型路由',
+                  link: '/model-cost-book/04-第04课-多模型路由',
+                },
+                {
+                  text: '第 05 课 · Key 放哪',
+                  link: '/model-cost-book/05-第05课-Key放哪谁来调',
+                },
+                {
+                  text: '第 06 课 · 流式与超时',
+                  link: '/model-cost-book/06-第06课-流式假流式与超时',
+                },
+              ],
+            },
+            {
+              text: '稳态篇',
+              items: [
+                {
+                  text: '第 07 课 · 限流缓存降级',
+                  link: '/model-cost-book/07-第07课-限流缓存与降级',
+                },
+                {
+                  text: '第 08 课 · 助教换模案例',
+                  link: '/model-cost-book/08-第08课-案例手册助教换模型',
+                },
+              ],
+            },
+            { text: '结语', link: '/model-cost-book/99-结语' },
           ],
         },
       ],

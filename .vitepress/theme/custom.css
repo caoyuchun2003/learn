@@ -1,0 +1,4 @@
+/* 手册助教：避免 FAB 挡到 VitePress 默认「回到顶部」 */
+.VPBackToTop {
+  bottom: 5.5rem !important;
+}

@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  base: '/learn/',
+  base: '/',
   title: 'Learn',
   description: '曹宇春的学习手册库 — AI、Agent、OS 与工程落地',
   lang: 'zh-CN',

@@ -8,7 +8,7 @@ This repo is a single **VitePress static documentation site** (`learn` — 曹�
 
 | Task | Command | Notes |
 |------|---------|-------|
-| Dev server | `npm run docs:dev` | Serves at `http://localhost:<port>/learn/`. Note the `/learn/` base path (set via `base: '/learn/'` in `.vitepress/config.ts`) — the bare `/` returns 404. |
+| Dev server | `npm run docs:dev` | Serves at `http://localhost:<port>/`. Custom domain: `https://learn.yuchuntest.com` (`base: '/'`). |
 | Build | `npm run docs:build` | Static output to `.vitepress/dist` (git-ignored). This is what CI/GitHub Pages runs. |
 | Preview built site | `npm run docs:preview` | Only meaningful after `docs:build`. |
 

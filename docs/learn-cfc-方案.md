@@ -12,7 +12,7 @@
 
 | 项 | 现状 |
 |----|------|
-| 站点 | VitePress → GitHub Pages（自定义域 `learn.yuchuntest.com`，`base: '/'`） |
+| 站点 | VitePress → GitHub Pages（`/learn/`） |
 | 内容 | 多本 Markdown 手册（AI / Agent / OS / …） |
 | 后端 | 无 |
 | 约束 | 个人开发、希望少备案；Key 不能进前端 |

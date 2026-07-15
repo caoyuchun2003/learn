@@ -5,7 +5,7 @@
       "id": "ai-00",
       "scope": "ai-handbook",
       "title": "AI 应用开发手册 · 前言与导读",
-      "path": "/AI应用开发手册/00-前言与导读.html",
+      "path": "/learn/AI应用开发手册/00-前言与导读.html",
       "keywords": ["导读", "心法", "context", "提示", "RAG", "微调", "决策"],
       "snippet": "三句话地基：大模型猜下一个词；万物可 token 化；Context 就是一切。知识用 RAG，行为用微调；能简单别复杂。"
     },
@@ -13,7 +13,7 @@
       "id": "ai-01",
       "scope": "ai-handbook",
       "title": "第 1 课 · LLM 的本质",
-      "path": "/AI应用开发手册/01-LLM的本质.html",
+      "path": "/learn/AI应用开发手册/01-LLM的本质.html",
       "keywords": ["LLM", "幻觉", "token", "下一个词", "本质"],
       "snippet": "大模型是猜下一个词的机器；会幻觉、无持久记忆、权重冻结。靠谱要靠给对的上下文。"
     },
@@ -21,7 +21,7 @@
       "id": "ai-03",
       "scope": "ai-handbook",
       "title": "第 3 课 · RAG 检索增强",
-      "path": "/AI应用开发手册/03-RAG检索增强.html",
+      "path": "/learn/AI应用开发手册/03-RAG检索增强.html",
       "keywords": ["RAG", "检索", "知识库", "embedding", "幻觉", "章节"],
       "snippet": "知识问答优先 RAG：先检索再生成。别用整节正文直灌替代检索；别拿微调背知识。"
     },
@@ -29,7 +29,7 @@
       "id": "ai-04",
       "scope": "ai-handbook",
       "title": "第 4 课 · Agent 智能体",
-      "path": "/AI应用开发手册/04-Agent智能体.html",
+      "path": "/learn/AI应用开发手册/04-Agent智能体.html",
       "keywords": ["Agent", "ReAct", "工具", "循环", "MCP", "智能体"],
       "snippet": "Agent = LLM + 工具 + 循环。能动手所以贵且险；要沙箱与权限确认。"
     },
@@ -37,7 +37,7 @@
       "id": "ai-05",
       "scope": "ai-handbook",
       "title": "第 5 课 · 微调 Finetuning",
-      "path": "/AI应用开发手册/05-微调Finetuning.html",
+      "path": "/learn/AI应用开发手册/05-微调Finetuning.html",
       "keywords": ["微调", "SFT", "行为", "风格", "LoRA"],
       "snippet": "微调改行为与口吻，不适合当知识库更新手段。知识用 RAG，行为用微调。"
     },
@@ -45,7 +45,7 @@
       "id": "ai-06",
       "scope": "ai-handbook",
       "title": "第 6 课 · AI 应用架构",
-      "path": "/AI应用开发手册/06-AI应用架构.html",
+      "path": "/learn/AI应用开发手册/06-AI应用架构.html",
       "keywords": ["架构", "BFF", "代理", "流式", "分层"],
       "snippet": "前端 / BFF / 模型 API / 向量库分层。Key 只放后端；流式与超时要设计。"
     },
@@ -53,7 +53,7 @@
       "id": "ai-10",
       "scope": "ai-handbook",
       "title": "第 10 课 · 提示工程",
-      "path": "/AI应用开发手册/10-提示工程.html",
+      "path": "/learn/AI应用开发手册/10-提示工程.html",
       "keywords": ["提示", "prompt", "few-shot", "角色"],
       "snippet": "临时需求优先 Prompt。角色、任务、格式、约束、示例写清楚。"
     },
@@ -61,7 +61,7 @@
       "id": "ai-11",
       "scope": "ai-handbook",
       "title": "第 11 课 · Eval 评估",
-      "path": "/AI应用开发手册/11-Eval评估.html",
+      "path": "/learn/AI应用开发手册/11-Eval评估.html",
       "keywords": ["Eval", "评估", "忠实度", "测试集"],
       "snippet": "在你自己的任务上测。关注忠实度、相关性、格式正确率。"
     },
@@ -69,7 +69,7 @@
       "id": "ai-16",
       "scope": "ai-handbook",
       "title": "第 16 课 · AI 系统设计模式",
-      "path": "/AI应用开发手册/16-AI系统设计模式.html",
+      "path": "/learn/AI应用开发手册/16-AI系统设计模式.html",
       "keywords": ["Workflow", "工作流", "设计模式", "路由", "编排"],
       "snippet": "能用简单 Workflow 就别上 Agent。提示链、路由、并行、编排、评估-优化、自主 Agent 从简到繁。"
     },
@@ -77,7 +77,7 @@
       "id": "ai-17",
       "scope": "ai-handbook",
       "title": "第 17 课 · 模型选型与成本",
-      "path": "/AI应用开发手册/17-模型选型与成本.html",
+      "path": "/learn/AI应用开发手册/17-模型选型与成本.html",
       "keywords": ["成本", "选型", "token", "价格"],
       "snippet": "能力匹配任务难度；默认中端档；难题再升级。控 token 与缓存。"
     },
@@ -85,7 +85,7 @@
       "id": "ai-20",
       "scope": "ai-handbook",
       "title": "第 20 课 · Embedding 与向量检索",
-      "path": "/AI应用开发手册/20-Embedding与向量检索.html",
+      "path": "/learn/AI应用开发手册/20-Embedding与向量检索.html",
       "keywords": ["embedding", "向量", "pgvector", "相似度"],
       "snippet": "语义向量用于检索；内网可用本地 Embedding + pgvector 闭环。"
     },
@@ -93,7 +93,7 @@
       "id": "agent-00",
       "scope": "agent-book",
       "title": "Agent 工程手册 · 前言与导读",
-      "path": "/agent-book/00-前言与导读.html",
+      "path": "/learn/agent-book/00-前言与导读.html",
       "keywords": ["Agent", "落地", "决策", "Workflow", "阅读器"],
       "snippet": "Agent 工程不是名词百科。先选对架构：多数产品需要 Workflow+RAG，不是自主 Agent。"
     },
@@ -101,7 +101,7 @@
       "id": "agent-01",
       "scope": "agent-book",
       "title": "第 01 课 · 教材阅读器要不要上 Agent？",
-      "path": "/agent-book/01-第01课-教材阅读器要不要上Agent.html",
+      "path": "/learn/agent-book/01-第01课-教材阅读器要不要上Agent.html",
       "keywords": ["阅读器", "教材", "网校", "五个问题", "直灌"],
       "snippet": "阅读器 V1 多数只要 RAG+Workflow。章节直灌、前端裸 Key 是常见翻车，不是 Agent 不够强。"
     },
@@ -109,7 +109,7 @@
       "id": "agent-02",
       "scope": "agent-book",
       "title": "第 02 课 · Workflow 与 Agent 怎么选",
-      "path": "/agent-book/02-第02课-Workflow与Agent怎么选.html",
+      "path": "/learn/agent-book/02-第02课-Workflow与Agent怎么选.html",
       "keywords": ["Workflow", "选型", "模式"],
       "snippet": "步骤固定用 Workflow；真没法预定义再用自主 Agent。渐进演进。"
     },
@@ -117,7 +117,7 @@
       "id": "agent-03",
       "scope": "agent-book",
       "title": "第 03 课 · RAG 够了吗？什么时候才需要工具",
-      "path": "/agent-book/03-第03课-RAG够了吗什么时候才需要工具.html",
+      "path": "/learn/agent-book/03-第03课-RAG够了吗什么时候才需要工具.html",
       "keywords": ["工具", "Function Calling", "RAG", "动手"],
       "snippet": "只问答用 RAG 即可；偶尔查后台用单次 Function Calling；多步不确定工具组合才上 Agent 循环。"
     },
@@ -125,7 +125,7 @@
       "id": "agent-06",
       "scope": "agent-book",
       "title": "第 06 课 · 自主 Agent",
-      "path": "/agent-book/06-第06课-自主Agent.html",
+      "path": "/learn/agent-book/06-第06课-自主Agent.html",
       "keywords": ["自主", "ReAct", "规划", "探索"],
       "snippet": "自主 Agent 是最后一档：给目标+工具自己循环。贵、不稳、难评，慎用。"
     },
@@ -133,7 +133,7 @@
       "id": "agent-07",
       "scope": "agent-book",
       "title": "第 07 课 · 工具设计与安全",
-      "path": "/agent-book/07-第07课-工具设计与安全.html",
+      "path": "/learn/agent-book/07-第07课-工具设计与安全.html",
       "keywords": ["安全", "沙箱", "审批", "注入"],
       "snippet": "工具要最小权限、人在环、防提示词注入。能动手必须可审计。"
     },
@@ -141,7 +141,7 @@
       "id": "agent-08",
       "scope": "agent-book",
       "title": "第 08 课 · MCP 与 Function Calling 选型",
-      "path": "/agent-book/08-第08课-MCP与FunctionCalling选型.html",
+      "path": "/learn/agent-book/08-第08课-MCP与FunctionCalling选型.html",
       "keywords": ["MCP", "Function Calling", "协议"],
       "snippet": "Function Calling 适合绑定自身业务 API；MCP 适合标准化对外能力给多种 Agent 复用。"
     },
@@ -149,7 +149,7 @@
       "id": "agent-11",
       "scope": "agent-book",
       "title": "第 11 课 · 阅读器 AI 答疑架构全景",
-      "path": "/agent-book/11-第11课-阅读器AI答疑架构全景.html",
+      "path": "/learn/agent-book/11-第11课-阅读器AI答疑架构全景.html",
       "keywords": ["阅读器", "架构", "BFF", "网校"],
       "snippet": "阅读器答疑推荐：浏览器 → BFF（藏 Key）→ 检索 → LLM 流式；给出处。"
     },
@@ -157,7 +157,7 @@
       "id": "agent-12",
       "scope": "agent-book",
       "title": "第 12 课 · 章节直灌 vs 知识库检索",
-      "path": "/agent-book/12-第12课-章节直灌vs知识库检索.html",
+      "path": "/learn/agent-book/12-第12课-章节直灌vs知识库检索.html",
       "keywords": ["直灌", "知识库", "token", "截断"],
       "snippet": "直灌费 token、易截断、难出处；知识库检索只塞相关 chunk，更可控。"
     },
@@ -165,7 +165,7 @@
       "id": "os-00",
       "scope": "os-book",
       "title": "操作系统白话 · 前言与导读",
-      "path": "/os-book/00-前言与导读.html",
+      "path": "/learn/os-book/00-前言与导读.html",
       "keywords": ["操作系统", "卡顿", "进程", "内存", "类比"],
       "snippet": "用公司类比讲 OS。对着 Mac 练；搞懂为什么卡、swap、Docker。"
     },
@@ -173,7 +173,7 @@
       "id": "os-02",
       "scope": "os-book",
       "title": "第 02 课 · 进程与线程",
-      "path": "/os-book/02-第02课-进程与线程.html",
+      "path": "/learn/os-book/02-第02课-进程与线程.html",
       "keywords": ["进程", "线程", "pid"],
       "snippet": "进程是部门，线程是工位。本机可用命令对照理解。"
     },
@@ -181,7 +181,7 @@
       "id": "os-03",
       "scope": "os-book",
       "title": "第 03 课 · 内存：桌面与仓库",
-      "path": "/os-book/03-第03课-内存桌面与仓库.html",
+      "path": "/learn/os-book/03-第03课-内存桌面与仓库.html",
       "keywords": ["内存", "swap", "RAM", "卡顿"],
       "snippet": "RAM 是办公桌，磁盘是仓库，swap 是临时把桌面东西堆到仓库——会变慢。"
     },
@@ -189,7 +189,7 @@
       "id": "decide-tool",
       "scope": "tools",
       "title": "工具 · AI 方案决策器",
-      "path": "/tools/ai-decision.html",
+      "path": "/learn/tools/ai-decision.html",
       "keywords": ["决策器", "选型", "四个问题", "规则"],
       "snippet": "四个问题用规则引擎建议 Workflow/RAG/Agent，不调用大模型。也可接百度 CFC。"
     },
@@ -197,7 +197,7 @@
       "id": "mc-00",
       "scope": "model-cost-book",
       "title": "模型与成本落地 · 前言与导读",
-      "path": "/model-cost-book/00-前言与导读.html",
+      "path": "/learn/model-cost-book/00-前言与导读.html",
       "keywords": ["模型", "成本", "Token", "DeepSeek", "选型", "控费"],
       "snippet": "先场景与预算再选模型。成本=单价×Token×次数×重试；模型名配置化，Key 不进前端。"
     },
@@ -205,7 +205,7 @@
       "id": "mc-01",
       "scope": "model-cost-book",
       "title": "第 01 课 · 模型不是越贵越好",
-      "path": "/model-cost-book/01-第01课-模型不是越贵越好.html",
+      "path": "/learn/model-cost-book/01-第01课-模型不是越贵越好.html",
       "keywords": ["越贵越好", "性价比", "主力模型", "兜底"],
       "snippet": "难模型当急救箱；默认用够用且稳的主力。还要看延迟、配额、稳定性。"
     },
@@ -213,7 +213,7 @@
       "id": "mc-02",
       "scope": "model-cost-book",
       "title": "第 02 课 · Token 账单怎么算",
-      "path": "/model-cost-book/02-第02课-Token账单怎么算.html",
+      "path": "/learn/model-cost-book/02-第02课-Token账单怎么算.html",
       "keywords": ["Token", "账单", "输入", "输出", "重试"],
       "snippet": "单价只是分子；摘录、多轮 history、重试才是爆炸点。先填估算表再选型。"
     },
@@ -221,7 +221,7 @@
       "id": "mc-03",
       "scope": "model-cost-book",
       "title": "第 03 课 · DeepSeek、文心、闭源怎么选",
-      "path": "/model-cost-book/03-第03课-DeepSeek文心闭源怎么选.html",
+      "path": "/learn/model-cost-book/03-第03课-DeepSeek文心闭源怎么选.html",
       "keywords": ["DeepSeek", "文心", "千帆", "选型", "invalid_model"],
       "snippet": "以账号可调用模型列表为准。导读短答可走 DeepSeek；难推理再升舱。"
     },
@@ -229,7 +229,7 @@
       "id": "mc-04",
       "scope": "model-cost-book",
       "title": "第 04 课 · 多模型路由",
-      "path": "/model-cost-book/04-第04课-多模型路由.html",
+      "path": "/learn/model-cost-book/04-第04课-多模型路由.html",
       "keywords": ["路由", "升舱", "降级", "多模型", "难度"],
       "snippet": "按题型/长度/失败率切模型；配置表驱动，避免前端写死模型名。"
     },
@@ -237,7 +237,7 @@
       "id": "mc-05",
       "scope": "model-cost-book",
       "title": "第 05 课 · Key 放哪、谁来调",
-      "path": "/model-cost-book/05-第05课-Key放哪谁来调.html",
+      "path": "/learn/model-cost-book/05-第05课-Key放哪谁来调.html",
       "keywords": ["API Key", "CFC", "BFF", "前端", "泄露"],
       "snippet": "浏览器永不持有模型 Key；CFC/BFF 集中调用；IAM 与千帆 Key 勿混。"
     },
@@ -245,7 +245,7 @@
       "id": "mc-06",
       "scope": "model-cost-book",
       "title": "第 06 课 · 流式、假流式与超时",
-      "path": "/model-cost-book/06-第06课-流式假流式与超时.html",
+      "path": "/learn/model-cost-book/06-第06课-流式假流式与超时.html",
       "keywords": ["SSE", "假流式", "CFC", "缓冲", "超时"],
       "snippet": "厂商可真流式；CFC HTTP 常整包缓冲→假流式。假流式不省 Token 与等待。"
     },
@@ -253,7 +253,7 @@
       "id": "mc-07",
       "scope": "model-cost-book",
       "title": "第 07 课 · 限流、缓存与降级",
-      "path": "/model-cost-book/07-第07课-限流缓存与降级.html",
+      "path": "/learn/model-cost-book/07-第07课-限流缓存与降级.html",
       "keywords": ["限流", "缓存", "降级", "配额", "控费"],
       "snippet": "限额防止账单爆炸；短问可缓存；模型不可用时降到规则或固定答。"
     },
@@ -261,7 +261,7 @@
       "id": "mc-08",
       "scope": "model-cost-book",
       "title": "第 08 课 · 案例：手册助教换模型",
-      "path": "/model-cost-book/08-第08课-案例手册助教换模型.html",
+      "path": "/learn/model-cost-book/08-第08课-案例手册助教换模型.html",
       "keywords": ["换模型", "deepseek-v3.2", "deploy", "QIANFAN_MODEL"],
       "snippet": "改 QIANFAN_MODEL + deploy + curl 看 model 字段 + 黄金问题验收。"
     },
@@ -269,7 +269,7 @@
       "id": "cc-00",
       "scope": "claude-code-book",
       "title": "Claude Code · 总导读",
-      "path": "/claude-code-book/00-总导读.html",
+      "path": "/learn/claude-code-book/00-总导读.html",
       "keywords": ["Claude Code", "终端 Agent", "导读", "课程路径"],
       "snippet": "从安装到插件开发：会用→会聊→会配→会搭→会造。适合把 Claude Code 当主力工具。"
     },
@@ -277,7 +277,7 @@
       "id": "cc-01",
       "scope": "claude-code-book",
       "title": "第 01 课 · 认识 Claude Code",
-      "path": "/claude-code-book/01-第01课-认识Claude-Code.html",
+      "path": "/learn/claude-code-book/01-第01课-认识Claude-Code.html",
       "keywords": ["认识", "Cursor", "ChatGPT", "区别", "终端"],
       "snippet": "终端里的 Agent 型编程工具：读代码、改文件、跑命令。和聊天窗 / IDE 插件不同。"
     },
@@ -285,7 +285,7 @@
       "id": "cc-13",
       "scope": "claude-code-book",
       "title": "第 13 课 · Skills",
-      "path": "/claude-code-book/13-第13课-Skills.html",
+      "path": "/learn/claude-code-book/13-第13课-Skills.html",
       "keywords": ["Skills", "SKILL.md", "触发", "能力包"],
       "snippet": "Skill 是带触发条件与步骤的能力包，匹配任务时自动加载。"
     },
@@ -293,7 +293,7 @@
       "id": "cc-14",
       "scope": "claude-code-book",
       "title": "第 14 课 · Hooks",
-      "path": "/claude-code-book/14-第14课-Hooks.html",
+      "path": "/learn/claude-code-book/14-第14课-Hooks.html",
       "keywords": ["Hooks", "钩子", "自动化", "生命周期"],
       "snippet": "在关键节点挂钩：格式化、校验、通知。把流程固化到工具生命周期。"
     },
@@ -301,7 +301,7 @@
       "id": "cc-16",
       "scope": "claude-code-book",
       "title": "第 16 课 · MCP",
-      "path": "/claude-code-book/16-第16课-MCP.html",
+      "path": "/learn/claude-code-book/16-第16课-MCP.html",
       "keywords": ["MCP", "Model Context Protocol", "工具", "扩展"],
       "snippet": "用 MCP 接外部工具与数据源，扩展 Claude Code 能碰的世界。"
     },
@@ -309,7 +309,7 @@
       "id": "cc-08",
       "scope": "claude-code-book",
       "title": "第 08 课 · CLAUDE.md",
-      "path": "/claude-code-book/08-第08课-CLAUDE-md.html",
+      "path": "/learn/claude-code-book/08-第08课-CLAUDE-md.html",
       "keywords": ["CLAUDE.md", "项目约定", "上下文", "规范"],
       "snippet": "用 CLAUDE.md 写下项目约定，让 Agent 每次都能对齐仓库习惯。"
     }
